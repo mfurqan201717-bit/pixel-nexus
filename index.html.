@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b16">
+<meta name="description" content="PIXEL NEXUS — a neon gaming arcade with browser mini-games.">
+<title>PIXEL NEXUS | Neon Gaming Arcade</title>
+<style>
+:root{--bg:#080b16;--panel:rgba(19,25,45,.92);--panel2:#151d35;--text:#f5f8ff;--muted:#aab7d3;--cyan:#4df7ff;--pink:#ff4fd8;--violet:#a77bff;--line:rgba(102,232,255,.22);--shadow:0 0 28px rgba(77,247,255,.09)}
+body.light{--bg:#f1f5ff;--panel:rgba(255,255,255,.94);--panel2:#e1eaff;--text:#151c35;--muted:#596783;--cyan:#007c91;--pink:#b91b94;--violet:#673cd0;--line:rgba(45,91,150,.22);--shadow:0 0 25px rgba(65,95,180,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;transition:background .25s,color .25s;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 12% 15%,rgba(167,123,255,.19),transparent 40%),radial-gradient(ellipse at 88% 35%,rgba(77,247,255,.1),transparent 35%)}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}.particle{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--cyan);animation:twinkle 3s infinite alternate}
+@keyframes twinkle{to{opacity:.12;transform:scale(.4)}}@keyframes float{50%{transform:translateY(-10px)}}@keyframes pulse{50%{box-shadow:0 0 28px rgba(255,79,216,.35)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes slidein{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{max-width:1120px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-weight:1000;letter-spacing:1.5px;text-decoration:none;color:var(--text);font-size:1.1rem}.brand span{color:var(--cyan);text-shadow:0 0 15px var(--cyan)}
+nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}nav a{color:var(--muted);text-decoration:none;font-size:.9rem}nav a:hover{color:var(--cyan)}
+button,.button{cursor:pointer;border:0;border-radius:12px;padding:11px 15px;font-weight:800;color:#07101a;background:linear-gradient(105deg,var(--cyan),#9ca9ff 55%,var(--pink));transition:transform .2s,filter .2s;text-decoration:none;display:inline-flex;justify-content:center;align-items:center;gap:7px}
+button:hover,.button:hover{transform:translateY(-2px);filter:brightness(1.08)}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+button.secondary,.button.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text);box-shadow:none}
+main{max-width:1120px;margin:auto;padding:0 20px}.hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:25px;min-height:530px;padding:65px 0 45px}
+.kicker{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:8px 12px;color:var(--cyan);font-size:.78rem;letter-spacing:1.2px}
+h1{font-size:clamp(3.1rem,7.5vw,6rem);line-height:.93;letter-spacing:-3px;margin:20px 0}.gradient{background:linear-gradient(100deg,var(--cyan),#b9a1ff 50%,var(--pink));background-clip:text;-webkit-background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:1.08rem;line-height:1.8;max-width:530px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}.clock{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:10px 13px;color:var(--muted);font-variant-numeric:tabular-nums}.clock strong{color:var(--text)}
+.hero-art{min-height:350px;display:grid;place-items:center;position:relative}.ring{position:absolute;width:min(95%,365px);aspect-ratio:1;border:1px solid rgba(77,247,255,.4);border-radius:50%;animation:spin 35s linear infinite}.ring:before,.ring:after{content:"";position:absolute;inset:28px;border:1px solid rgba(255,79,216,.35);border-radius:50%;transform:scaleX(.55) rotate(40deg)}.ring:after{inset:55px;border-color:var(--violet);transform:scaleX(.55) rotate(-40deg)}
+.console{width:235px;height:235px;border-radius:34%;display:grid;place-items:center;font-size:6.5rem;background:radial-gradient(circle,rgba(77,247,255,.2),rgba(167,123,255,.1) 55%,transparent 72%);border:1px solid var(--line);box-shadow:0 0 55px rgba(77,247,255,.13);animation:float 5s infinite}
+.float-label{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 13px;box-shadow:var(--shadow);font-size:.85rem;animation:float 4s infinite}.label-a{top:35px;left:0}.label-b{bottom:35px;right:0;animation-delay:-2s}
+.section{padding:35px 0 45px;animation:slidein .6s both}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;flex-wrap:wrap;margin-bottom:20px}h2{font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-1px;margin:10px 0 7px}.muted{color:var(--muted);line-height:1.65;margin:0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-5px);border-color:var(--cyan)}
+.game-art{height:150px;display:grid;place-items:center;font-size:4.4rem;position:relative;overflow:hidden}.game-art:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,247,255,.13),transparent,rgba(255,79,216,.18));pointer-events:none}.a1{background:linear-gradient(135deg,#142c5b,#7136a5)}.a2{background:linear-gradient(135deg,#093c43,#157d91)}.a3{background:linear-gradient(135deg,#42133e,#a83277)}.a4{background:linear-gradient(135deg,#172c4b,#6153c5)}.a5{background:linear-gradient(135deg,#282045,#9d6332)}.a6{background:linear-gradient(135deg,#103c34,#426bb1)}
+.card-content{padding:17px}.card h3,.panel h3{margin:0 0 8px}.card p{color:var(--muted);font-size:.9rem;line-height:1.6;min-height:42px}.tag{font-size:.72rem;display:inline-block;color:var(--cyan);background:var(--panel2);padding:5px 9px;border-radius:99px;margin-bottom:9px}.card button{width:100%}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:17px}.panel{padding:22px}.play-area{background:var(--panel2);border:1px solid var(--line);border-radius:15px;margin:15px 0;padding:20px;text-align:center}.big{font-size:3.4rem;display:block;margin:5px}.result{color:var(--cyan);font-weight:750;min-height:28px;margin:12px 0}.row{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}.row button{min-width:65px}
+.music-row{display:flex;align-items:center;gap:15px;flex-wrap:wrap}.disc{width:68px;height:68px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;font-size:1.6rem;color:#08111c;background:conic-gradient(var(--cyan),var(--violet),var(--pink),var(--cyan))}.disc.playing{animation:spin 4s linear infinite}
+label{font-size:.9rem;color:var(--muted)}input{display:block;width:100%;margin:6px 0 13px;padding:12px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--text);font:inherit}.note{font-size:.81rem;color:var(--muted);line-height:1.6}.hidden{display:none!important}
+footer{border-top:1px solid var(--line);margin-top:25px;padding:30px 20px;text-align:center;color:var(--muted);font-size:.85rem}.toast{position:fixed;z-index:20;bottom:20px;left:50%;transform:translate(-50%,18px);opacity:0;pointer-events:none;background:var(--panel2);border:1px solid var(--cyan);padding:13px 18px;border-radius:12px;box-shadow:var(--shadow);transition:.25s;max-width:90vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:780px){.hero{grid-template-columns:1fr;padding-top:35px}.hero-art{min-height:280px;order:-1}.ring{width:275px}.console{width:185px;height:185px;font-size:5rem}.label-a{left:4%;top:12px}.label-b{right:4%;bottom:15px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:1fr}.nav{align-items:flex-start}.nav>div{display:flex;flex-direction:column;gap:8px}nav{gap:10px}nav a{font-size:.82rem}}
+@media(max-width:500px){main{padding:0 14px}.nav{padding:12px 14px;flex-direction:column}.grid{grid-template-columns:1fr}.game-art{height:135px}h1{letter-spacing:-2px}.panel{padding:16px}.section{padding-top:28px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="particles" aria-hidden="true"></div>
+<header><div class="nav">
+  <div><a class="brand" href="#home">PIXEL <span>NEXUS</span></a><div class="clock">🕒 <strong id="clock">--:--:--</strong> <span id="date"></span></div></div>
+  <nav aria-label="Main navigation"><a href="#arcade">Arcade</a><a href="#games">Mini-games</a><a href="#music">Music</a><a href="#account">Profile</a><button class="secondary" id="themeBtn" type="button">☀️ Light</button></nav>
+</div></header>
+<main id="home">
+<section class="hero">
+ <div><div class="kicker">✦ PLAYER ONE · SYSTEM ONLINE</div><h1>Level up<br>your <span class="gradient">universe.</span></h1><p class="lead">Welcome to Pixel Nexus: a neon-powered gaming hub packed with browser mini-games, synth beats, and your own player profile.</p><div class="actions"><a class="button" href="#arcade">Explore arcade ↗</a><a class="button secondary" href="#games">Play now 🎮</a></div><div class="clock">⚡ Status: <strong>READY TO PLAY</strong></div></div>
+ <div class="hero-art" aria-label="Decorative neon game portal"><div class="ring"></div><div class="console" aria-hidden="true">🎮</div><div class="float-label label-a">⚡ Arcade unlocked</div><div class="float-label label-b">✦ New high scores await</div></div>
+</section>
+<section class="section" id="arcade"><div class="section-head"><div><div class="kicker">01 / GAME LIBRARY</div><h2>Choose your <span class="gradient">next quest</span></h2><p class="muted">Pick a game card to jump straight into its mini-game.</p></div></div>
+<div class="grid">
+<article class="card"><div class="game-art a1">🚀</div><div class="card-content"><span class="tag">ARCADE</span><h3>Star Catcher</h3><p>Collect as many stars as you can before the timer runs out.</p><a class="button" href="#games">Play game ↗</a></div></article>
+<article class="card"><div class="game-art a2">🧠</div><div class="card-content"><span class="tag">BRAIN TRAINING</span><h3>Quick Quiz</h3><p>Test your instincts with a fast round of gaming trivia.</p><a class="button" href="#quiz">Play game ↗</a></div></article>
+<article class="card"><div class="game-art a3">🎯</div><div class="card-content"><span class="tag">CHALLENGE</span><h3>Reaction Test</h3><p>Wait for the signal, then test how quickly you can react.</p><a class="button" href="#reaction">Play game ↗</a></div></article>
+<article class="card"><div class="game-art a4">🧩</div><div class="card-content"><span class="tag">PUZZLE</span><h3>Lucky Number</h3><p>Guess the secret number from 1 to 20 in as few tries as possible.</p><a class="button" href="#number">Play game ↗</a></div></article>
+<article class="card"><div class="game-art a5">🎵</div><div class="card-content"><span class="tag">SOUND LAB</span><h3>Neon Beats</h3><p>Switch on a gentle synthesized loop while you explore.</p><a class="button" href="#music">Listen now ↗</a></div></article>
+<article class="card"><div class="game-art a6">🌌</div><div class="card-content"><span class="tag">YOUR SPACE</span><h3>Player Profile</h3><p>Set a display name for this browser demo.</p><a class="button" href="#account">Open profile ↗</a></div></article>
+</div></section>
+<section class="section" id="games"><div class="section-head"><div><div class="kicker">02 / PLAY ZONE</div><h2>Mini-game <span class="gradient">central</span></h2><p class="muted">Small games, instant fun—right in your browser.</p></div></div>
+<div class="two-col">
+<div class="panel"><h3 id="quiz">🧠 Quick quiz</h3><p class="muted">Which key is commonly used to jump in many PC platform games?</p><div class="play-area"><div class="row"><button class="secondary quiz" data-answer="wrong" type="button">Ctrl</button><button class="secondary quiz" data-answer="right" type="button">Space</button><button class="secondary quiz" data-answer="wrong" type="button">Esc</button></div><div class="result" id="quizResult" aria-live="polite"></div><button id="quizNext" type="button">Try again</button></div></div>
+<div class="panel"><h3>⭐ Star catcher</h3><p class="muted">Catch as many stars as possible in 10 seconds.</p><div class="play-area"><div class="row" style="justify-content:space-between"><span>Score: <strong id="score">0</strong></span><span>Time: <strong id="time">10</strong>s</span></div><button id="star" class="secondary" type="button" style="font-size:2.2rem;margin:18px auto;padding:16px 28px" disabled>⭐</button><div class="result" id="starResult" aria-live="polite">Ready when you are!</div><button id="startStars" type="button">Start game</button></div></div>
+<div class="panel" id="reaction"><h3>🎯 Reaction test</h3><p class="muted">Start the test, wait for green, then tap as quickly as possible.</p><div class="play-area"><div id="reactionBox" style="padding:25px 10px;border-radius:12px;background:#6d315e;color:white;font-weight:850;margin-bottom:14px">Press start to begin</div><button id="reactionStart" type="button">Start test</button><div class="result" id="reactionResult" aria-live="polite"></div></div></div>
+<div class="panel" id="number"><h3>🔢 Lucky number</h3><p class="muted">I'm thinking of a number from 1 to 20. Can you guess it?</p><div class="play-area"><label for="guess">Your guess</label><input id="guess" type="number" min="1" max="20" placeholder="Enter 1–20"><button id="guessBtn" type="button">Check guess</button><div class="result" id="guessResult" aria-live="polite">Make your first guess!</div><button id="resetGuess" class="secondary" type="button">New number</button></div></div>
+</div></section>
+<section class="section" id="music"><div class="section-head"><div><div class="kicker">03 / SOUND SYSTEM</div><h2>Power up the <span class="gradient">vibe</span></h2><p class="muted">An original, soft synthesized loop created by your browser.</p></div></div><div class="panel"><div class="music-row"><div class="disc" id="disc">♫</div><div style="flex:1;min-width:170px"><h3 style="margin-bottom:5px">Nexus Night Drive</h3><p class="muted" id="musicStatus">Ambient synth tones · Click play to begin</p></div><button id="musicBtn" type="button">▶ Play music</button><button id="musicStop" class="secondary" type="button">■ Stop</button></div><p class="note" style="margin-top:17px">Music starts only after you press play. Lower your device volume first if needed. No audio file or download is required.</p></div></section>
+<section class="section" id="account"><div class="section-head"><div><div class="kicker">04 / PLAYER ID</div><h2>Your gaming <span class="gradient">profile</span></h2><p class="muted">Try the signup design and keep a nickname on this device.</p></div></div>
+<div class="two-col"><div class="panel"><h3>🪪 Create demo profile</h3><form id="profileForm"><label for="playerName">Player nickname</label><input id="playerName" maxlength="24" placeholder="e.g. PixelPilot" required><label for="playerEmail">Email (demo only)</label><input id="playerEmail" type="email" placeholder="player@example.com" required><button type="submit">Create profile</button></form><p class="note">This is a visual demo only. It does not create a real account or send data anywhere. Use a nickname and a made-up email while testing. Never enter your password here.</p></div><div class="panel"><h3>🏆 Player card</h3><div class="play-area"><span class="big">🕹️</span><strong id="profileTitle">Guest player</strong><p class="muted" id="profileText">Your demo profile will appear here.</p><button class="secondary hidden" id="signOut" type="button">Sign out</button></div><p class="note">Secure real login needs a backend or authentication provider. This static GitHub Pages site intentionally does not store passwords.</p></div></div></section>
+</main>
+<footer><a class="brand" href="#home">PIXEL <span>NEXUS</span></a><p>Play curious. Stay kind. Keep leveling up. ✦</p><a href="#home" style="color:var(--cyan)">Back to top ↑</a></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=>{const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+// Animated stars
+for(let i=0;i<85;i++){const p=document.createElement('i');p.className='particle';p.style.left=Math.random()*100+'%';p.style.top=Math.random()*100+'%';p.style.opacity=Math.random();p.style.animationDelay=Math.random()*4+'s';p.style.animationDuration=2+Math.random()*4+'s';$('#particles').appendChild(p)}
+// Live local clock
+function tick(){const d=new Date();$('#clock').textContent=d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'});$('#date').textContent=d.toLocaleDateString([],{month:'short',day:'numeric'})}tick();setInterval(tick,1000);
+// Theme toggle
+if(localStorage.getItem('pixelNexusTheme')==='light')document.body.classList.add('light');
+function themeLabel(){$('#themeBtn').textContent=document.body.classList.contains('light')?'🌙 Dark':'☀️ Light'}themeLabel();
+$('#themeBtn').addEventListener('click',()=>{document.body.classList.toggle('light');localStorage.setItem('pixelNexusTheme',document.body.classList.contains('light')?'light':'dark');themeLabel()});
+// Toast
+let toastTimer;function toast(s){const t=$('#toast');t.textContent=s;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2400)}
+// Quiz
+$$('.quiz').forEach(b=>b.addEventListener('click',()=>{$('#quizResult').textContent=b.dataset.answer==='right'?'Correct! Space is a common jump key.':'Not that one—try again!';}));
+$('#quizNext').addEventListener('click',()=>{$('#quizResult').textContent='Pick the Space button for the correct answer.'});
+// Star game
+let score=0,left=10,starTimer=null,running=false;$('#star').disabled=true;
+function endStars(){clearInterval(starTimer);running=false;$('#star').disabled=true;$('#starResult').textContent=`Time's up! You caught ${score} star${score===1?'':'s'}!`;$('#startStars').textContent='Play again'}
+$('#startStars').addEventListener('click',()=>{clearInterval(starTimer);score=0;left=10;running=true;$('#score').textContent=score;$('#time').textContent=left;$('#starResult').textContent='Go!';$('#star').disabled=false;$('#startStars').textContent='Restart';starTimer=setInterval(()=>{left--;$('#time').textContent=left;if(left<=0)endStars()},1000)});
+$('#star').addEventListener('click',()=>{if(!running)return;score++;$('#score').textContent=score;$('#star').textContent=['⭐','🌟','✨','💫'][Math.floor(Math.random()*4)]});
+// Reaction game
+let reactionTimeout=null,ready=false,reactionStartTime=0;
+$('#reactionStart').addEventListener('click',()=>{clearTimeout(reactionTimeout);ready=false;$('#reactionBox').style.background='#6d315e';$('#reactionBox').textContent='Wait for green...';$('#reactionResult').textContent='';$('#reactionStart').textContent='Restart test';reactionTimeout=setTimeout(()=>{ready=true;reactionStartTime=performance.now();$('#reactionBox').style.background='#138b61';$('#reactionBox').textContent='TAP NOW!'},1200+Math.random()*2600)});
+$('#reactionBox').addEventListener('click',()=>{if(!ready){$('#reactionResult').textContent='Wait until the box turns green.';return}const ms=Math.round(performance.now()-reactionStartTime);ready=false;$('#reactionBox').textContent='Nice reflexes!';$('#reactionResult').textContent=`Your reaction time: ${ms} ms`;$('#reactionStart').textContent='Try again'});
+// Guess number
+let secret=Math.floor(Math.random()*20)+1,tries=0;
+function resetGuess(){secret=Math.floor(Math.random()*20)+1;tries=0;$('#guess').value='';$('#guessResult').textContent='New number chosen. Good luck!'}
+$('#guessBtn').addEventListener('click',()=>{const n=Number($('#guess').value);if(!Number.isInteger(n)||n<1||n>20){$('#guessResult').textContent='Enter a whole number from 1 to 20.';return}tries++;if(n===secret){$('#guessResult').textContent=`You got it in ${tries} guess${tries===1?'':'es'}! 🎉`;secret=Math.floor(Math.random()*20)+1;tries=0}else $('#guessResult').textContent=n<secret?'Too low—try higher!':'Too high—try lower!'});
+$('#resetGuess').addEventListener('click',resetGuess);
+// Browser-generated ambient synth
+let ctx=null,master=null,musicTimer=null,note=0;const tones=[220,261.63,329.63,392,329.63,293.66,246.94,349.23];
+function notePlay(){if(!ctx||!master)return;const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=tones[note++%tones.length];g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.035,ctx.currentTime+.12);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+1.1);o.connect(g);g.connect(master);o.start();o.stop(ctx.currentTime+1.15)}
+async function playMusic(){const AC=window.AudioContext||window.webkitAudioContext;if(!AC){toast('Audio is not supported in this browser.');return}if(!ctx){ctx=new AC();master=ctx.createGain();master.gain.value=.55;master.connect(ctx.destination)}await ctx.resume();if(musicTimer)clearInterval(musicTimer);notePlay();musicTimer=setInterval(notePlay,650);$('#disc').classList.add('playing');$('#musicStatus').textContent='Playing original ambient synth loop';$('#musicBtn').textContent='⏸ Pause music'}
+function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}if(ctx&&ctx.state==='running')ctx.suspend();$('#disc').classList.remove('playing');$('#musicStatus').textContent='Paused · Press play to resume';$('#musicBtn').textContent='▶ Play music'}
+$('#musicBtn').addEventListener('click',()=>musicTimer?stopMusic():playMusic());$('#musicStop').addEventListener('click',stopMusic);
+// Demo profile: nickname only; never store email or password
+function profile(name){$('#profileTitle').textContent='Welcome, '+name+'!';$('#profileText').textContent='Demo player profile saved on this device.';$('#signOut').classList.remove('hidden')}
+const oldName=localStorage.getItem('pixelNexusName');if(oldName)profile(oldName);
+$('#profileForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#playerName').value.trim(),email=$('#playerEmail').value.trim();if(!name||!email){toast('Fill in both fields to try the demo.');return}localStorage.setItem('pixelNexusName',name);profile(name);$('#profileForm').reset();toast('Demo profile created!')});
+$('#signOut').addEventListener('click',()=>{localStorage.removeItem('pixelNexusName');$('#profileTitle').textContent='Guest player';$('#profileText').textContent='Your demo profile will appear here.';$('#signOut').classList.add('hidden');toast('Signed out on this device.')});
+})();
+</script>
+</body>
+</html>
